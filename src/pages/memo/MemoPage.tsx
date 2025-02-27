@@ -1,9 +1,10 @@
 import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
-import { useMemoStore } from "@/stores/memo/memo-store";
+import useMemoStoreHandler from "@/stores/memo/useMemoStoreHandler";
+import { getCurrentTime } from "@/utils/utils";
 
 const MemoPage = () => {
-  const { list, addMemo } = useMemoStore();
+  const { list, addMemo, deleteMemo, updateMemo } = useMemoStoreHandler();
 
   console.log(list);
   return (
@@ -17,13 +18,27 @@ const MemoPage = () => {
             id: "1",
             title: "test",
             content: "test",
-            createdAt: "2024-01-01",
-            updatedAt: "2024-01-01",
+            createdAt: getCurrentTime(new Date()),
+            updatedAt: getCurrentTime(new Date()),
           })
         }
       >
         추가
       </Button>
+      <Button
+        onClick={() =>
+          updateMemo({
+            id: "1",
+            title: "title update",
+            content: "content update",
+            createdAt: getCurrentTime(new Date()),
+            updatedAt: getCurrentTime(new Date()),
+          })
+        }
+      >
+        수정
+      </Button>
+      <Button onClick={() => deleteMemo("1")}>삭제</Button>
     </Box>
   );
 };

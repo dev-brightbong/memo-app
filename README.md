@@ -9,3 +9,12 @@
   - 목록 컴포넌트 구현
   - 모달 컴포넌트 구현
 5. 데이터 바인딩 처리
+
+
+### 이슈
+
+#### 맥OS esbuild 권한 이슈
+```pnpm dev``` 명령어 사용시 esbuild 실행 파일에 대한 권한문제가 있을 경우 chmod를 이용해 permission을 변경해야 합니다.
+
+```bash
+chmod +x node_modules/.pnpm/esbuild@0.25.0/node_modules/esbuild/node_modules/@esbuild/darwin-arm64/bin/esbuild
