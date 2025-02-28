@@ -8,8 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "gen:theme-typings": "npx @chakra-ui/cli typegen ./src/configs/theme/theme.ts",
-    "postinstall": "pnpm run gen:theme-typings"
+    "gen:theme-typegen": "npx @chakra-ui/cli typegen ./src/configs/theme/theme.ts",
+    "postinstall": "pnpm run gen:theme-typegen"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.8.1",

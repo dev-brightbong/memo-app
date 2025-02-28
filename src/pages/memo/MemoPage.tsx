@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
-import useMemoStoreHandler from "@/stores/memo/useMemoStoreHandler";
+import useMemoHandler from "@/stores/memo/useMemoHandler";
 import { getCurrentTime } from "@/utils/utils";
 
 const MemoPage = () => {
-  const { list, addMemo, deleteMemo, updateMemo } = useMemoStoreHandler();
+  const { list, addMemo, deleteMemo, updateMemo } = useMemoHandler();
 
   console.log(list);
   return (

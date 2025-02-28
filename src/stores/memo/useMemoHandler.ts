@@ -3,7 +3,7 @@ import { createMemoStore } from "./memo-store";
 
 const memoStore = createBoundedUseStore(createMemoStore);
 
-const useMemoStoreHandler = () => {
+const useMemoHandler = () => {
   const list = memoStore((selector) => selector.list);
   const addMemo = memoStore((selector) => selector.addMemo);
   const updateMemo = memoStore((selector) => selector.updateMemo);
@@ -12,4 +12,4 @@ const useMemoStoreHandler = () => {
   return { list, addMemo, updateMemo, deleteMemo };
 };
 
-export default useMemoStoreHandler;
+export default useMemoHandler;
