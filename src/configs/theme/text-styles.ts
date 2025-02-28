@@ -6,7 +6,6 @@ const textStyles = defineTextStyles({
       fontWeight: "600",
       fontSize: "22px",
       lineHeight: "30px",
-      
     },
   },
   content: {
