@@ -1,7 +1,7 @@
-import { Navigate } from "react-router-dom";
+import Home from "@/containers/Home/Home";
 
 const HomePage = () => {
-  return <Navigate to="/memo" replace />;
+  return <Home />;
 };
 
 export default HomePage;
