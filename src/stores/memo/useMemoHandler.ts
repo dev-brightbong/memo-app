@@ -1,15 +1,27 @@
-import { createBoundedUseStore } from "../helper/create-bounded-store";
-import { createMemoStore } from "./memo-store";
+import { MemoType } from "./memo.type";
+import useMemoState from "./useMemoState";
 
-const memoStore = createBoundedUseStore(createMemoStore);
+export type UseMemoHandlerProps = ReturnType<typeof useMemoState>;
 
-const useMemoHandler = () => {
-  const list = memoStore((selector) => selector.list);
-  const addMemo = memoStore((selector) => selector.addMemo);
-  const updateMemo = memoStore((selector) => selector.updateMemo);
-  const deleteMemo = memoStore((selector) => selector.deleteMemo);
+const useMemoHandler = ({
+  list,
+  addMemo,
+  updateMemo,
+  deleteMemo,
+}: UseMemoHandlerProps) => {
+  const onAddMemo = (newMemo: MemoType) => {
+    addMemo(newMemo);
+  };
 
-  return { list, addMemo, updateMemo, deleteMemo };
+  const onUpdateMemo = (updatedMemo: MemoType) => {
+    updateMemo(updatedMemo);
+  };
+
+  const onDeleteMemo = (memoId: string) => {
+    deleteMemo(memoId);
+  };
+
+  return { list, onAddMemo, onUpdateMemo, onDeleteMemo };
 };
 
 export default useMemoHandler;

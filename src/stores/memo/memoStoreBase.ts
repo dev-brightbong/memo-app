@@ -1,14 +1,15 @@
-import { createStore } from "zustand";
+import { create } from "zustand";
 import { MemoStoreType } from "./memo.type";
 import { persist } from "zustand/middleware";
 import { MEMO_STORAGE_KEY } from "@/utils/web-storage/memo-storage";
+import createSelectors from "../helper/createSelectors";
 
 /**
  * @title 메모 리스트를 관리하는 스토어입니다.
  * @description persist 미들웨어를 사용해 LocalStorage에 메모 리스트 정보를 저장합니다.
  *
  */
-export const createMemoStore = createStore<MemoStoreType>()(
+export const useMemoStoreBase = create<MemoStoreType>()(
   persist(
     (set) => ({
       list: [],
@@ -50,3 +51,7 @@ export const createMemoStore = createStore<MemoStoreType>()(
     }
   )
 );
+
+const useMemoStoreSelector = createSelectors(useMemoStoreBase);
+
+export default useMemoStoreSelector;
