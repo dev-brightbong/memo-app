@@ -4,6 +4,8 @@ import HomePage from "./pages/home/HomePage";
 import MemoPage from "./pages/memo/MemoPage";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import RedirectPage from "./pages/redirect/RedirectPage";
+import "./App.css";
+
 function App() {
   return (
     <BrowserRouter>
