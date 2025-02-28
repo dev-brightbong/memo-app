@@ -16,27 +16,19 @@ const getPostItTextColor = (bgColor: PostItProps["bgColor"]) => {
  */
 const FoldedRectangle = () => {
   return (
-    <Box
-      position="absolute"
-      bottom="0"
-      right="0"
-      width="20px"
-      height="20px"
-      bg="transparent"
-      clipPath="polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-    >
+    <Box position="absolute" bottom="0" right="0" width="20px" height="20px">
       <Box
         position="absolute"
         width="100%"
         height="100%"
         bg={"colors.common.black"}
-        opacity={0.3}
+        opacity={0.2}
       />
       <Box
         position="absolute"
         width="100%"
         height="100%"
-        bg="black"
+        bg="colors.common.black"
         clipPath="polygon(100% 0, 100% 100%, 0 100%)"
       />
     </Box>
@@ -71,7 +63,7 @@ const PostIt = ({
 }: Partial<PostItProps>) => {
   return (
     <VStack
-      width="240px"
+      width={{ base: "100%", md: "240px" }}
       minH="216px"
       position={"relative"}
       overflow="hidden"
