@@ -6,8 +6,7 @@ export const textRecipe = defineRecipe({
       primary: {
         color: "colors.common.white",
         fontWeight: "400",
-        fontSize: "18px",
-        lineHeight: "28px",
+        fontSize: "16px",
       },
     },
   },
