@@ -9,6 +9,24 @@ const colors = defineTokens({
       white: {
         value: "#FFFFFF",
       },
+      blue: {
+        value: "#2F80ED",
+      },
+      purple: {
+        value: "#BD10E0",
+      },
+      orange: {
+        value: "#F2994A",
+      },
+      red: {
+        value: "#EB5757",
+      },
+      green: {
+        value: "#27AE60",
+      },
+      yellow: {
+        value: "#FBE575",
+      },
     },
   },
 });

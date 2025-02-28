@@ -5,7 +5,12 @@ export interface DefaultLayoutProps extends BoxProps {}
 
 const DefaultLayout = ({ ...props }: DefaultLayoutProps) => {
   return (
-    <Box as="main" role="main" aria-label="Main Content area">
+    <Box
+      as="main"
+      role="main"
+      aria-label="Main Content area"
+      bgColor="colors.common.black"
+    >
       <Box
         as="section"
         role="section"
