@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { getCurrentTime } from "@/utils/utils";
 import { Button } from "@/components/ui/Button";
 import Text from "@/components/ui/Text";
-import Memo from "@/containers/Memo/Memo";
+import Memo from "@/containers/memo2/Memo";
 import useMemoStore from "@/stores/memo/useMemoStore";
 
 const MemoPage = () => {

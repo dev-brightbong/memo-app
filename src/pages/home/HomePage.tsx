@@ -1,4 +1,4 @@
-import Home from "@/containers/Home/Home";
+import Home from "@/containers/home2/Home";
 
 const HomePage = () => {
   return <Home />;
