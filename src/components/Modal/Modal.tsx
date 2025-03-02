@@ -31,7 +31,12 @@ export namespace Modal {
     onClose,
   }: BaseModalProps) => {
     return (
-      <DialogRoot open={open} onOpenChange={onClose}>
+      <DialogRoot
+        closeOnEscape={false}
+        closeOnInteractOutside={false}
+        open={open}
+        onOpenChange={onClose}
+      >
         <DialogBackdrop />
         <DialogContent p="16px" {...dialogContentProps}>
           {children}
@@ -86,7 +91,6 @@ export namespace Modal {
 
     const handleSave = () => {
       onSave({ title, content });
-      onClose();
     };
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

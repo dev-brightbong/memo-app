@@ -1,52 +1,39 @@
-import { Grid } from "@chakra-ui/react";
-import PostIt from "@/components/PostIt/PostIt";
+import { Grid, VStack } from "@chakra-ui/react";
 import CreateButton from "@/containers/memo/components/CreateButton/CreateButton";
-import { DETAIL_MODAL, useContextModal } from "@/providers/modal/ModalProvider";
+import PostIt from "@/components/PostIt/PostIt";
+import Text from "@/components/Text/Text";
 import useMemoHook from "./hooks/useMemoHook";
-import { toaster } from "@/components/ui/toaster";
 
 const Memo = () => {
-  const { columns } = useMemoHook();
-  const { openModal, closeModal } = useContextModal();
-
-  const onClickDetail = ({
-    title,
-    content,
-  }: {
-    title: string;
-    content: string;
-  }) => {
-    openModal(DETAIL_MODAL, {
-      title,
-      content,
-      open: true,
-      onClose: () => {
-        closeModal();
-      },
-    });
-  };
+  const { columns, list, onOpenDetailModal } = useMemoHook();
 
   return (
     <>
       <CreateButton />
+
+      <VStack my="16px" justifyContent="center" alignItems="center">
+        <Text textStyle="1xl">
+          우측 하단의 플러스버튼을 누르면 메모를 작성하실 수 있어요 :)
+        </Text>
+        <Text textStyle="2xl">메모 목록</Text>
+      </VStack>
+
       <Grid templateColumns={`repeat(${columns}, 1fr)`} rowGap="32px">
-        {Array.from({ length: 10 }).map((_, index) => {
+        {list.map((item) => {
+          const { id, bgColor, title, content, createdAt, updatedAt } = item;
           return (
             <PostIt.Card
-              bgColor={"colors.common.blue"}
-              title={`제목 ${index}`}
-              content={`내용 ${index}`}
-              createdAt={`2025-03-02`}
-              updatedAt={`2025-03-02`}
+              key={`postit-${id}`}
+              bgColor={bgColor}
+              title={title}
+              content={content}
+              createdAt={createdAt}
+              updatedAt={updatedAt}
               onClick={() => {
-                toaster.create({
-                  description: "내용",
+                onOpenDetailModal({
+                  title,
+                  content,
                 });
-
-                // onClickDetail({
-                //   title: `제목 ${index}`,
-                //   content: `내용 ${index}`,
-                // });
               }}
               onUpdate={() => {
                 console.log("update");

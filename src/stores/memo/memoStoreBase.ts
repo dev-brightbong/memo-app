@@ -19,7 +19,7 @@ export const useMemoStoreBase = create<MemoStoreType>()(
           if (hasMemo) return state;
           return {
             ...state,
-            list: [...state.list, newMemo],
+            list: [newMemo, ...state.list],
           };
         });
       },
