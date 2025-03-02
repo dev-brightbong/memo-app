@@ -3,6 +3,7 @@ import PostIt from "@/components/PostIt/PostIt";
 import CreateButton from "@/containers/memo/components/CreateButton/CreateButton";
 import { DETAIL_MODAL, useContextModal } from "@/providers/modal/ModalProvider";
 import useMemoHook from "./hooks/useMemoHook";
+import { toaster } from "@/components/ui/toaster";
 
 const Memo = () => {
   const { columns } = useMemoHook();
@@ -37,11 +38,15 @@ const Memo = () => {
               content={`내용 ${index}`}
               createdAt={`2025-03-02`}
               updatedAt={`2025-03-02`}
-              onClick={(e) => {
-                onClickDetail({
-                  title: `제목 ${index}`,
-                  content: `내용 ${index}`,
+              onClick={() => {
+                toaster.create({
+                  description: "내용",
                 });
+
+                // onClickDetail({
+                //   title: `제목 ${index}`,
+                //   content: `내용 ${index}`,
+                // });
               }}
               onUpdate={() => {
                 console.log("update");
