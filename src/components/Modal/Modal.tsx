@@ -61,10 +61,10 @@ export namespace Modal {
           <DialogDescription>{content}</DialogDescription>
         </DialogBody>
         <DialogFooter>
-          <Button bgColor="colors.common.black" onClick={onClose}>
+          <Button visual="secondary" onClick={onClose}>
             {cancelText}
           </Button>
-          <Button bgColor="colors.common.black" onClick={handleConfirm}>
+          <Button visual="secondary" onClick={handleConfirm}>
             {confirmText}
           </Button>
         </DialogFooter>
@@ -117,10 +117,10 @@ export namespace Modal {
           />
 
           <HStack w="100%" justifyContent={"flex-end"}>
-            <Button bgColor="colors.common.black" onClick={handleSave}>
+            <Button visual="secondary" onClick={handleSave}>
               {saveText}
             </Button>
-            <Button bgColor="colors.common.black" onClick={onClose}>
+            <Button visual="secondary" onClick={onClose}>
               {cancelText}
             </Button>
           </HStack>
@@ -143,7 +143,7 @@ export namespace Modal {
           <DialogDescription>{content}</DialogDescription>
         </DialogBody>
         <DialogFooter>
-          <Button bgColor="colors.common.black" onClick={onClose}>
+          <Button visual="secondary" onClick={onClose}>
             {closeText}
           </Button>
         </DialogFooter>

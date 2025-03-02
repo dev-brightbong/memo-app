@@ -1,7 +1,10 @@
+import { PostItProps } from "@/components/PostIt/PostIt";
+
 export interface MemoType {
   id: string;
   title: string;
   content: string;
+  bgColor: PostItProps["bgColor"];
   createdAt: string;
   updatedAt: string;
 }

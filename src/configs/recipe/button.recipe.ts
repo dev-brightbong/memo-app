@@ -1,7 +1,7 @@
 import { defineRecipe } from "@chakra-ui/react";
 
 /**
- * chakra-ui recipe 파일 컨벤션 
+ * chakra-ui recipe 파일 컨벤션
  * 레시피이름.recipe.ts
  * 레시피 이름은 소문자로 작성
  * @title 버튼 레시피
@@ -9,8 +9,13 @@ import { defineRecipe } from "@chakra-ui/react";
 export const buttonRecipe = defineRecipe({
   variants: {
     visual: {
-      solid: {
-        bg: "colors.common.blue",
+      primary: {
+        bg: "colors.common.white",
+        color: "colors.common.black",
+        cursor: "pointer",
+      },
+      secondary: {
+        bg: "colors.common.black",
         color: "colors.common.white",
         cursor: "pointer",
       },
@@ -25,7 +30,7 @@ export const buttonRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    visual: "solid",
+    visual: "primary",
     size: "default",
   },
 });

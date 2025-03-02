@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Box, BoxProps } from "@chakra-ui/react";
-import CreateButton from "../CreateButton/CreateButton";
 
 export interface DefaultLayoutProps extends BoxProps {}
 
@@ -22,7 +21,6 @@ const DefaultLayout = ({ ...props }: DefaultLayoutProps) => {
         minHeight="100vh"
         {...props}
       >
-        <CreateButton />
         <Outlet />
       </Box>
     </Box>
