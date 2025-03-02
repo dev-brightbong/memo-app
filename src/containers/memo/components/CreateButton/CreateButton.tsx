@@ -1,6 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import { CREATE_UPDATE_MODAL } from "@/providers/modal/ModalProvider";
 import { useContextModal } from "@/providers/modal/ModalProvider";
+import PlusIcon from "@/components/Icons/PlusIcon";
+import DeleteIcon from "@/components/Icons/DeleteIcon";
+import UpdateIcon from "@/components/Icons/UpdateIcon";
 
 const CreateButton = () => {
   const { openModal, closeModal } = useContextModal();
@@ -18,7 +21,7 @@ const CreateButton = () => {
   };
   return (
     <>
-      <Box
+      <Center
         zIndex={9}
         position={"fixed"}
         bottom={{ base: "10px", md: "80px" }}
@@ -27,8 +30,13 @@ const CreateButton = () => {
         width="80px"
         height="80px"
         borderRadius="99px"
+        cursor="pointer"
         onClick={handleOpenCreateUpdateModal}
-      />
+      >
+        <PlusIcon width="40px" height="40px" />
+        <DeleteIcon width="40px" height="40px" />
+        <UpdateIcon width="40px" height="40px" />
+      </Center>
     </>
   );
 };
