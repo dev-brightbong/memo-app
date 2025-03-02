@@ -32,15 +32,23 @@ const Memo = () => {
         {Array.from({ length: 10 }).map((_, index) => {
           return (
             <PostIt.Card
-              bgColor={"colors.common.yellow"}
+              bgColor={"colors.common.blue"}
               title={`제목 ${index}`}
               content={`내용 ${index}`}
-              onClick={() =>
+              createdAt={`2025-03-02`}
+              updatedAt={`2025-03-02`}
+              onClick={(e) => {
                 onClickDetail({
                   title: `제목 ${index}`,
                   content: `내용 ${index}`,
-                })
-              }
+                });
+              }}
+              onUpdate={() => {
+                console.log("update");
+              }}
+              onDelete={() => {
+                console.log("delete");
+              }}
             />
           );
         })}

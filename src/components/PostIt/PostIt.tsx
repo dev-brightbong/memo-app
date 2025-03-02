@@ -1,5 +1,7 @@
-import { Box, StackProps, VStack } from "@chakra-ui/react";
+import { Box, HStack, StackProps, VStack } from "@chakra-ui/react";
 import Text from "../Text/Text";
+import UpdateIcon from "../Icons/UpdateIcon";
+import DeleteIcon from "../Icons/DeleteIcon";
 
 /**
  * 포스트잇 텍스트 색상
@@ -28,10 +30,7 @@ export interface PostItProps extends StackProps {
 }
 
 export namespace PostIt {
-  export /**
-   * 접힌영역 표시
-   */
-  const FoldedRectangle = () => {
+  export const FoldedRectangle = () => {
     return (
       <Box position="absolute" bottom="0" right="0" width="20px" height="20px">
         <Box
@@ -61,7 +60,17 @@ export namespace PostIt {
     onDelete,
     onUpdate,
     ...props
-  }: Partial<PostItProps>) => {
+  }: PostItProps) => {
+    const handleOnUpdate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+      e.stopPropagation();
+      onUpdate?.();
+    };
+
+    const handleOnDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+      e.stopPropagation();
+      onDelete?.();
+    };
+
     return (
       <VStack
         width={{ base: "100%", md: "240px" }}
@@ -79,14 +88,22 @@ export namespace PostIt {
           {title}
         </Text>
         <Text color={getPostItTextColor(bgColor)} textStyle="content">
-          {content}
+          {content?.length > 60 ? `${content?.slice(0, 60)}...` : content}
         </Text>
-        <Text color={getPostItTextColor(bgColor)} textStyle="date">
-          {createdAt}
-        </Text>
-        <Text color={getPostItTextColor(bgColor)} textStyle="date">
-          {updatedAt}
-        </Text>
+
+        <HStack position="absolute" bottom="40px" left="10px">
+          <Text color={getPostItTextColor(bgColor)} textStyle="date">
+            작성일: {createdAt}
+          </Text>
+          <Text color={getPostItTextColor(bgColor)} textStyle="date">
+            수정일: {updatedAt}
+          </Text>
+        </HStack>
+
+        <HStack position="absolute" gap="0" bottom="10px" left="10px">
+          <UpdateIcon width="16px" height="16px" onClick={handleOnUpdate} />
+          <DeleteIcon width="16px" height="16px" onClick={handleOnDelete} />
+        </HStack>
 
         <FoldedRectangle />
       </VStack>

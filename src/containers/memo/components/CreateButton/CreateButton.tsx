@@ -34,8 +34,6 @@ const CreateButton = () => {
         onClick={handleOpenCreateUpdateModal}
       >
         <PlusIcon width="40px" height="40px" />
-        <DeleteIcon width="40px" height="40px" />
-        <UpdateIcon width="40px" height="40px" />
       </Center>
     </>
   );

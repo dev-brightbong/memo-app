@@ -18,7 +18,7 @@ const textStyles = defineTextStyles({
   date: {
     value: {
       fontWeight: "400",
-      fontSize: "12px",
+      fontSize: "10px",
       lineHeight: "1.1",
     },
   },
