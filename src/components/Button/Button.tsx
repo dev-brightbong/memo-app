@@ -18,5 +18,5 @@ export const Button = (props: ButtonProps) => {
   const recipe = useRecipe({ recipe: buttonRecipe });
   const styles = recipe({ visual, size });
 
-  return <chakra.button css={styles} {...restProps} />;
+  return <chakra.button css={styles} textStyle="button" {...restProps} />;
 };

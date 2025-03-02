@@ -1,6 +1,6 @@
 import { Center, Image } from "@chakra-ui/react";
-import { Button } from "@/components/ui/Button";
-import Text from "@/components/ui/Text";
+import { Button } from "@/components/Button/Button";
+import Text from "@/components/Text/Text";
 
 import backgroundImage from "@/assets/png/background.png";
 import useHome from "./hooks/useHome";

@@ -1,5 +1,5 @@
 import { Box, StackProps, VStack } from "@chakra-ui/react";
-import Text from "./Text";
+import Text from "../Text/Text";
 
 /**
  * 포스트잇 텍스트 색상
