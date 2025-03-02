@@ -1,9 +1,11 @@
-interface BaseModalProps {
+export interface BaseModalProps {
   open: boolean;
+  dialogContentProps?: DialogContentProps;
+  children?: React.ReactNode;
   onClose: () => void;
 }
 
-interface ConfirmModalProps extends BaseModalProps {
+export interface ConfirmModalProps extends BaseModalProps {
   title: string;
   content: string;
   confirmText?: string;
@@ -11,7 +13,7 @@ interface ConfirmModalProps extends BaseModalProps {
   onConfirm?: () => void;
 }
 
-interface CreateUpdateModalProps extends BaseModalProps {
+export interface CreateUpdateModalProps extends BaseModalProps {
   initialTitle?: string;
   initialContent?: string;
   saveText?: string;
@@ -19,7 +21,7 @@ interface CreateUpdateModalProps extends BaseModalProps {
   onSave: ({ title, content }: { title: string; content: string }) => void;
 }
 
-interface DetailModalProps extends BaseModalProps {
+export interface DetailModalProps extends BaseModalProps {
   title: string;
   content: string;
   closeText?: string;

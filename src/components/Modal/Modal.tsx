@@ -1,14 +1,6 @@
 import { useState } from "react";
-import { Button } from "../Button/Button";
-import {
-  DialogBackdrop,
-  DialogContent,
-  DialogFooter,
-  DialogRoot,
-} from "../ui/dialog";
 import {
   DialogBody,
-  DialogContentProps,
   DialogDescription,
   DialogTitle,
   HStack,
@@ -16,20 +8,28 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react";
+import {
+  BaseModalProps,
+  ConfirmModalProps,
+  CreateUpdateModalProps,
+  DetailModalProps,
+} from "@/providers/modal/modal.type";
+import {
+  DialogBackdrop,
+  DialogContent,
+  DialogFooter,
+  DialogRoot,
+} from "../ui/dialog";
+import { Button } from "../Button/Button";
 import Text from "../Text/Text";
 
 export namespace Modal {
   export const BaseModal = ({
     open,
     children,
-    onClose,
     dialogContentProps,
-  }: {
-    open: boolean;
-    children?: React.ReactNode;
-    onClose: () => void;
-    dialogContentProps?: DialogContentProps;
-  }) => {
+    onClose,
+  }: BaseModalProps) => {
     return (
       <DialogRoot open={open} onOpenChange={onClose}>
         <DialogBackdrop />
@@ -48,15 +48,7 @@ export namespace Modal {
     cancelText = "취소",
     onClose,
     onConfirm,
-  }: {
-    open: boolean;
-    title: string;
-    content: string;
-    confirmText?: string;
-    cancelText?: string;
-    onClose: () => void;
-    onConfirm?: () => void;
-  }) => {
+  }: ConfirmModalProps) => {
     const handleConfirm = () => {
       onConfirm?.();
       onClose();
@@ -88,15 +80,7 @@ export namespace Modal {
     onSave,
     saveText = "저장",
     cancelText = "취소",
-  }: {
-    open: boolean;
-    onClose: () => void;
-    initialTitle?: string;
-    initialContent?: string;
-    onSave: ({ title, content }: { title: string; content: string }) => void;
-    saveText?: string;
-    cancelText?: string;
-  }) => {
+  }: CreateUpdateModalProps) => {
     const [title, setTitle] = useState(initialTitle);
     const [content, setContent] = useState(initialContent);
 
@@ -151,13 +135,7 @@ export namespace Modal {
     title,
     content,
     closeText = "닫기",
-  }: {
-    open: boolean;
-    onClose: () => void;
-    title: string;
-    content: string;
-    closeText?: string;
-  }) => {
+  }: DetailModalProps) => {
     return (
       <Modal.BaseModal open={open} onClose={onClose}>
         <DialogBody>
