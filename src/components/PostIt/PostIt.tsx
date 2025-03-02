@@ -76,12 +76,12 @@ export namespace PostIt {
         width={{ base: "100%", md: "240px" }}
         minH="216px"
         position={"relative"}
-        overflow="hidden"
         alignItems={"flex-start"}
+        overflow="hidden"
         pt="20px"
         px="20px"
-        bgColor={bgColor}
         cursor="pointer"
+        bgColor={bgColor}
         {...props}
       >
         <Text color={getPostItTextColor(bgColor)} textStyle="title">
