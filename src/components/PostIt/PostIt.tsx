@@ -16,8 +16,9 @@ const getPostItTextColor = (bgColor: PostItProps["bgColor"]) => {
 export interface PostItProps extends StackProps {
   title: string;
   content: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+  hasEdit?: boolean;
   bgColor:
     | "colors.common.yellow"
     | "colors.common.green"
@@ -25,8 +26,8 @@ export interface PostItProps extends StackProps {
     | "colors.common.orange"
     | "colors.common.blue"
     | "colors.common.purple";
-  onDelete: () => void;
-  onUpdate: () => void;
+  onDelete?: () => void;
+  onUpdate?: () => void;
 }
 
 export namespace PostIt {
@@ -57,8 +58,10 @@ export namespace PostIt {
     createdAt,
     updatedAt,
     bgColor = "colors.common.yellow",
+    hasEdit = true,
     onDelete,
     onUpdate,
+    children,
     ...props
   }: PostItProps) => {
     const handleOnUpdate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -88,24 +91,30 @@ export namespace PostIt {
           {title.length > 14 ? `${title?.slice(0, 14)}...` : title}
         </Text>
         <Text color={getPostItTextColor(bgColor)} textStyle="content">
-          {content.length > 105 ? `${content?.slice(0, 105)}...` : content}
+          {content.length > 84 ? `${content?.slice(0, 84)}...` : content}
         </Text>
 
         <HStack position="absolute" bottom="40px" left="10px">
-          <Text color={getPostItTextColor(bgColor)} textStyle="date">
-            작성일: {createdAt}
-          </Text>
-          <Text color={getPostItTextColor(bgColor)} textStyle="date">
-            수정일: {updatedAt}
-          </Text>
+          {createdAt && (
+            <Text color={getPostItTextColor(bgColor)} textStyle="date">
+              작성일: {createdAt}
+            </Text>
+          )}
+          {updatedAt && (
+            <Text color={getPostItTextColor(bgColor)} textStyle="date">
+              수정일: {updatedAt}
+            </Text>
+          )}
         </HStack>
 
-        <HStack position="absolute" gap="0" bottom="10px" left="10px">
-          <UpdateIcon width="16px" height="16px" onClick={handleOnUpdate} />
-          <DeleteIcon width="16px" height="16px" onClick={handleOnDelete} />
-        </HStack>
-
+        {hasEdit && (
+          <HStack position="absolute" gap="0" bottom="10px" left="10px">
+            <UpdateIcon width="16px" height="16px" onClick={handleOnUpdate} />
+            <DeleteIcon width="16px" height="16px" onClick={handleOnDelete} />
+          </HStack>
+        )}
         <FoldedRectangle />
+        {children}
       </VStack>
     );
   };
