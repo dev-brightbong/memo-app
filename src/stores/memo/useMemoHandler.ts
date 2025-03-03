@@ -13,7 +13,7 @@ const useMemoHandler = ({
     addMemo(newMemo);
   };
 
-  const onUpdateMemo = (updatedMemo: MemoType) => {
+  const onUpdateMemo = (updatedMemo: Partial<MemoType>) => {
     updateMemo(updatedMemo);
   };
 

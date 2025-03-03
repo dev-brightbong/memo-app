@@ -85,10 +85,10 @@ export namespace PostIt {
         {...props}
       >
         <Text color={getPostItTextColor(bgColor)} textStyle="title">
-          {title}
+          {title.length > 14 ? `${title?.slice(0, 14)}...` : title}
         </Text>
         <Text color={getPostItTextColor(bgColor)} textStyle="content">
-          {content?.length > 105 ? `${content?.slice(0, 105)}...` : content}
+          {content.length > 105 ? `${content?.slice(0, 105)}...` : content}
         </Text>
 
         <HStack position="absolute" bottom="40px" left="10px">

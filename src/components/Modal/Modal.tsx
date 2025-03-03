@@ -63,14 +63,14 @@ export namespace Modal {
       <Modal.BaseModal open={open} onClose={onClose}>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{content}</DialogDescription>
+          <DialogDescription whiteSpace={"pre-line"}>{content}</DialogDescription>
         </DialogBody>
         <DialogFooter>
-          <Button visual="secondary" onClick={onClose}>
-            {cancelText}
-          </Button>
           <Button visual="secondary" onClick={handleConfirm}>
             {confirmText}
+          </Button>
+          <Button visual="secondary" onClick={onClose}>
+            {cancelText}
           </Button>
         </DialogFooter>
       </Modal.BaseModal>
@@ -144,7 +144,9 @@ export namespace Modal {
       <Modal.BaseModal open={open} onClose={onClose}>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{content}</DialogDescription>
+          <DialogDescription minH="300px" maxH="300px" overflowY="auto">
+            {content}
+          </DialogDescription>
         </DialogBody>
         <DialogFooter>
           <Button visual="secondary" onClick={onClose}>

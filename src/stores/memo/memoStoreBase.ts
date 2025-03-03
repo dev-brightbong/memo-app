@@ -30,7 +30,10 @@ export const useMemoStoreBase = create<MemoStoreType>()(
           );
           if (memoIndex === -1) return state;
           const newList = [...state.list];
-          newList[memoIndex] = updatedMemo;
+          newList[memoIndex] = {
+            ...newList[memoIndex],
+            ...updatedMemo,
+          };
           return {
             ...state,
             list: newList,

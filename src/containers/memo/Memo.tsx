@@ -5,7 +5,7 @@ import Text from "@/components/Text/Text";
 import useMemoHook from "./hooks/useMemoHook";
 
 const Memo = () => {
-  const { columns, list, onOpenDetailModal } = useMemoHook();
+  const { columns, list, modals } = useMemoHook();
 
   return (
     <>
@@ -30,16 +30,20 @@ const Memo = () => {
               createdAt={createdAt}
               updatedAt={updatedAt}
               onClick={() => {
-                onOpenDetailModal({
+                modals.onOpenDetailModal({
                   title,
                   content,
                 });
               }}
               onUpdate={() => {
-                console.log("update");
+                modals.onOpenUpdateModal({
+                  initialTitle: title,
+                  initialContent: content,
+                  id,
+                });
               }}
               onDelete={() => {
-                console.log("delete");
+                modals.onOpenDeleteModal(id);
               }}
             />
           );

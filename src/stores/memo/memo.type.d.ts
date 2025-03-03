@@ -12,6 +12,6 @@ export interface MemoType {
 export type MemoStoreType = {
   list: MemoType[];
   addMemo: (memo: MemoType) => void;
-  updateMemo: (memo: MemoType) => void;
+  updateMemo: (memo: Partial<MemoType>) => void;
   deleteMemo: (id: string) => void;
 };

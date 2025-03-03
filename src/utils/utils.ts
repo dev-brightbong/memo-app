@@ -12,7 +12,7 @@ export const hasEmptyText = (text: string) => {
  * @description 최소 길이 검사 함수
  */
 export const needMinLength = (text: string, minLength: number) => {
-  return text.length >= minLength;
+  return text.length < minLength;
 };
 
 /**
