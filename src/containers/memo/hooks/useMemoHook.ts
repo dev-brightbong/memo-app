@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useBreakpointValue } from "@chakra-ui/react";
 import { toaster } from "@/components/ui/toaster";
@@ -36,9 +35,7 @@ const useMemoHook = () => {
   /**
    * @description 메모 목록
    */
-  const memoList = useMemo(() => {
-    return [createButton, ...list];
-  }, [list]);
+  const memoList = [createButton, ...list];
 
   /**
    * @description 메모 생성
