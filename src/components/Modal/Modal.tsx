@@ -13,7 +13,7 @@ import {
   ConfirmModalProps,
   CreateUpdateModalProps,
   DetailModalProps,
-} from "@/providers/modal/modal.type";
+} from "@/providers/modal/modal";
 import {
   DialogBackdrop,
   DialogContent,

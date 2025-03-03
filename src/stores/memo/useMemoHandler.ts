@@ -1,4 +1,4 @@
-import { MemoType } from "./memo.type";
+import { MemoType } from "./memo";
 import useMemoState from "./useMemoState";
 
 export type UseMemoHandlerProps = ReturnType<typeof useMemoState>;

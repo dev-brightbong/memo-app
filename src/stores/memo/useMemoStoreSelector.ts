@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MemoStoreType } from "./memo.type";
+import { MemoStoreType } from "./memo";
 import { persist } from "zustand/middleware";
 import { MEMO_STORAGE_KEY } from "@/utils/web-storage/memo-storage";
 import createSelectors from "../helper/createSelectors";

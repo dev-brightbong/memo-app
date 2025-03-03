@@ -9,7 +9,7 @@ import {
   useContextModal,
 } from "@/providers/modal/ModalProvider";
 import useMemoStore from "@/stores/memo/useMemoStore";
-import { MemoType } from "@/stores/memo/memo.type";
+import { MemoType } from "@/stores/memo/memo";
 import { getCurrentTime, getRandomPostItColor } from "@/utils/utils";
 import { validateContent, validateTitle } from "@/utils/validate";
 

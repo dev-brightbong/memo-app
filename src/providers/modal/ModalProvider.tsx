@@ -4,7 +4,7 @@ import {
   CreateUpdateModalProps,
   DetailModalProps,
   ModalPropsMap,
-} from "./modal.type";
+} from "./modal";
 
 import { Modal } from "@/components/Modal/Modal";
 
