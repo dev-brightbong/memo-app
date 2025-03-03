@@ -17,9 +17,7 @@ const Memo = () => {
                 bgColor={bgColor}
                 title={title}
                 content={content}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-                hasEdit={id !== "new"}
+                hasEdit={false}
                 onClick={() => {
                   modals.onOpenCreateModal();
                 }}
@@ -33,7 +31,6 @@ const Memo = () => {
                 content={content}
                 createdAt={createdAt}
                 updatedAt={updatedAt}
-                hasEdit={id !== "new"}
                 onClick={() => {
                   modals.onOpenDetailModal({
                     title,
