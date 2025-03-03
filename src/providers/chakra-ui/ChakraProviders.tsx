@@ -7,10 +7,6 @@ export interface ChakraProviderProps {
 }
 
 const ChakraProviders = ({ children }: ChakraProviderProps) => {
-  return (
-    <>
-      <ChakraProvider value={theme}>{children}</ChakraProvider>
-    </>
-  );
+  return <ChakraProvider value={theme}>{children}</ChakraProvider>;
 };
 export default ChakraProviders;

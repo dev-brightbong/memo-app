@@ -1,4 +1,9 @@
-import useMemoStoreSelector from "./memoStoreBase";
+import useMemoStoreSelector from "./useMemoStoreSelector";
+
+/**
+ * @title 메모 상태
+ * @description 메모 상태를 관리합니다.
+ */
 
 const useMemoState = () => {
   const list = useMemoStoreSelector.use.list();
