@@ -6,6 +6,7 @@ import {
   useContextModal,
 } from "@/providers/modal/ModalProvider";
 import useMemoStore from "@/stores/memo/useMemoStore";
+import { validateContent, validateTitle } from "@/utils/validate";
 
 const useCreateButton = () => {
   const { openModal, closeModal } = useContextModal();
@@ -18,17 +19,19 @@ const useCreateButton = () => {
     title: string;
     content: string;
   }) => {
-    if (title.trim() === "" || content.trim() === "") {
+    const titleValidate = validateTitle(title);
+    if (!titleValidate.isValid) {
       toaster.create({
-        description: "제목과 내용을 입력해주세요.",
+        description: titleValidate.message,
         type: "error",
       });
       return;
     }
 
-    if (content.trim().length < 10) {
+    const contentValidate = validateContent(content);
+    if (!contentValidate.isValid) {
       toaster.create({
-        description: "내용은 최소 10자 이상 입력해주세요.",
+        description: contentValidate.message,
         type: "error",
       });
       return;
