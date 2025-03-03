@@ -24,6 +24,10 @@ pnpm build && pnpm preview
 chmod +x node_modules/.pnpm/esbuild@0.25.0/node_modules/esbuild/node_modules/@esbuild/darwin-arm64/bin/esbuild
 ```
 
+## 주요 기능 설명
+![스크린샷 2025-03-04 오전 12 08 10](https://github.com/user-attachments/assets/269d0b8e-4163-44df-b756-5849ac106eef)
+
+
 ## 폴더 구조
 ```
 ├── public                  # static assets
