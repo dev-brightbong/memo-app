@@ -28,7 +28,7 @@ export interface DetailModalProps extends BaseModalProps {
 }
 
 export type ModalPropsMap = {
-  CreateUpdateModal: CreateUpdateModalProps;
-  DetailModal: DetailModalProps;
-  ConfirmModal: ConfirmModalProps;
+  CreateUpdateModal: Omit<CreateUpdateModalProps, "open">;
+  DetailModal: Omit<DetailModalProps, "open">;
+  ConfirmModal: Omit<ConfirmModalProps, "open">;
 };

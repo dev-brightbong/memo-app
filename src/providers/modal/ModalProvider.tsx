@@ -49,15 +49,24 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
       {children}
 
       {isOpen && modalType === DETAIL_MODAL && modalProps && (
-        <Modal.DetailModal {...(modalProps as DetailModalProps)} />
+        <Modal.DetailModal
+          {...(modalProps as DetailModalProps)}
+          open={isOpen}
+        />
       )}
 
       {isOpen && modalType === CREATE_UPDATE_MODAL && modalProps && (
-        <Modal.CreateUpdateModal {...(modalProps as CreateUpdateModalProps)} />
+        <Modal.CreateUpdateModal
+          {...(modalProps as CreateUpdateModalProps)}
+          open={isOpen}
+        />
       )}
 
       {isOpen && modalType === CONFIRM_MODAL && modalProps && (
-        <Modal.ConfirmModal {...(modalProps as ConfirmModalProps)} />
+        <Modal.ConfirmModal
+          {...(modalProps as ConfirmModalProps)}
+          open={isOpen}
+        />
       )}
     </ModalContext.Provider>
   );

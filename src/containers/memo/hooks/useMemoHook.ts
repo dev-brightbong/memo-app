@@ -38,6 +38,51 @@ const useMemoHook = () => {
   const memoList = [createButton, ...list];
 
   /**
+   * @description 메모 유효성 검사
+   */
+  const handleValidation = (title: string, content: string) => {
+    const { isValid: titleIsValid, message: titleMessage } =
+      validateTitle(title);
+    if (!titleIsValid) {
+      toaster.create({
+        description: titleMessage,
+        type: "error",
+      });
+      return false;
+    }
+
+    const { isValid: contentIsValid, message: contentMessage } =
+      validateContent(content);
+    if (!contentIsValid) {
+      toaster.create({
+        description: contentMessage,
+        type: "error",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  /**
+   * @description 성공 처리
+   */
+  const handleSuccess = ({
+    callback,
+    description,
+  }: {
+    callback: () => void;
+    description: string;
+  }) => {
+    callback();
+    closeModal();
+    toaster.create({
+      description,
+      type: "success",
+    });
+  };
+
+  /**
    * @description 메모 생성
    */
   const createMemo = ({
@@ -47,37 +92,20 @@ const useMemoHook = () => {
     title: string;
     content: string;
   }) => {
-    const titleValidate = validateTitle(title);
-    if (!titleValidate.isValid) {
-      toaster.create({
-        description: titleValidate.message,
-        type: "error",
-      });
-      return;
-    }
+    if (!handleValidation(title, content)) return;
 
-    const contentValidate = validateContent(content);
-    if (!contentValidate.isValid) {
-      toaster.create({
-        description: contentValidate.message,
-        type: "error",
-      });
-      return;
-    }
-
-    onAddMemo({
-      id: uuidv4(),
-      title: title.trim(),
-      content: content.trim(),
-      bgColor: getRandomPostItColor(),
-      createdAt: getCurrentTime(new Date()),
-      updatedAt: getCurrentTime(new Date()),
-    });
-
-    closeModal();
-    toaster.create({
-      description: "메모가 추가되었어요.",
-      type: "success",
+    handleSuccess({
+      callback: () => {
+        onAddMemo({
+          id: uuidv4(),
+          title: title.trim(),
+          content: content.trim(),
+          bgColor: getRandomPostItColor(),
+          createdAt: getCurrentTime(new Date()),
+          updatedAt: getCurrentTime(new Date()),
+        });
+      },
+      description: "메모가 추가되었습니다.",
     });
   };
 
@@ -93,28 +121,18 @@ const useMemoHook = () => {
     content: string;
     id: string;
   }) => {
-    const titleValidate = validateTitle(title);
-    if (!titleValidate.isValid) {
-      toaster.create({
-        description: titleValidate.message,
-        type: "error",
-      });
-      return;
-    }
-    const contentValidate = validateContent(content);
-    if (!contentValidate.isValid) {
-      toaster.create({
-        description: contentValidate.message,
-        type: "error",
-      });
-      return;
-    }
+    if (!handleValidation(title, content)) return;
 
-    onUpdateMemo({ id, title, content, updatedAt: getCurrentTime(new Date()) });
-    closeModal();
-    toaster.create({
+    handleSuccess({
+      callback: () => {
+        onUpdateMemo({
+          id,
+          title,
+          content,
+          updatedAt: getCurrentTime(new Date()),
+        });
+      },
       description: "메모가 수정되었습니다.",
-      type: "success",
     });
   };
 
@@ -122,11 +140,11 @@ const useMemoHook = () => {
    * @description 메모 삭제
    */
   const deleteMemo = (id: string) => {
-    onDeleteMemo(id);
-    closeModal();
-    toaster.create({
+    handleSuccess({
+      callback: () => {
+        onDeleteMemo(id);
+      },
       description: "메모가 삭제되었습니다.",
-      type: "success",
     });
   };
 
@@ -135,7 +153,6 @@ const useMemoHook = () => {
    */
   const onOpenCreateModal = () => {
     openModal(CREATE_UPDATE_MODAL, {
-      open: true,
       onClose: () => {
         closeModal();
       },
@@ -158,7 +175,7 @@ const useMemoHook = () => {
     openModal(DETAIL_MODAL, {
       title: title,
       content: content,
-      open: true,
+
       onClose: () => {
         closeModal();
       },
@@ -180,7 +197,6 @@ const useMemoHook = () => {
     openModal(CREATE_UPDATE_MODAL, {
       initialTitle,
       initialContent,
-      open: true,
       onClose: () => {
         closeModal();
       },
@@ -198,7 +214,6 @@ const useMemoHook = () => {
       title: "삭제",
       content: "정말 삭제하시겠어요?",
       confirmText: "삭제",
-      open: true,
       onClose: () => {
         closeModal();
       },
