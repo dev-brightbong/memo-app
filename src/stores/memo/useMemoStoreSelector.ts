@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MemoStoreType } from "./memo";
+import { MemoStoreType, MemoType } from "./memo";
 import { persist } from "zustand/middleware";
 import { MEMO_STORAGE_KEY } from "@/utils/web-storage/memo-storage";
 import createSelectors from "../helper/createSelectors";
@@ -13,14 +13,10 @@ export const useMemoStoreBase = create<MemoStoreType>()(
   persist(
     (set) => ({
       list: [],
-      addMemo(newMemo) {
+      addMemo: (newMemo) => {
         set((state) => {
-          const hasMemo = state.list.some((memo) => memo.id === newMemo.id);
-          if (hasMemo) return state;
-          return {
-            ...state,
-            list: [newMemo, ...state.list],
-          };
+          if (state.list.some((memo) => memo.id === newMemo.id)) return state;
+          return updateList(state, [newMemo, ...state.list]);
         });
       },
       updateMemo(updatedMemo) {
@@ -30,23 +26,17 @@ export const useMemoStoreBase = create<MemoStoreType>()(
           );
           if (memoIndex === -1) return state;
           const newList = [...state.list];
-          newList[memoIndex] = {
-            ...newList[memoIndex],
-            ...updatedMemo,
-          };
-          return {
-            ...state,
-            list: newList,
-          };
+          newList[memoIndex] = { ...newList[memoIndex], ...updatedMemo };
+          return updateList(state, newList);
         });
       },
-      deleteMemo(memoId) {
-        set((state) => {
-          return {
-            ...state,
-            list: state.list.filter((memo) => memo.id !== memoId),
-          };
-        });
+      deleteMemo: (memoId) => {
+        set((state) =>
+          updateList(
+            state,
+            state.list.filter((memo) => memo.id !== memoId)
+          )
+        );
       },
     }),
     {
@@ -54,6 +44,11 @@ export const useMemoStoreBase = create<MemoStoreType>()(
     }
   )
 );
+
+const updateList = (state: MemoStoreType, newList: MemoType[]) => ({
+  ...state,
+  list: newList,
+});
 
 const useMemoStoreSelector = createSelectors(useMemoStoreBase);
 

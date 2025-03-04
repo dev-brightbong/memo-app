@@ -175,7 +175,6 @@ const useMemoHook = () => {
     openModal(DETAIL_MODAL, {
       title: title,
       content: content,
-
       onClose: () => {
         closeModal();
       },
