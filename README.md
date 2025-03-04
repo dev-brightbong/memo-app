@@ -32,13 +32,13 @@ chmod +x node_modules/.pnpm/esbuild@0.25.0/node_modules/esbuild/node_modules/@es
 ## 주요 기능 설명
 ![스크린샷 2025-03-04 오전 12 08 10](https://github.com/user-attachments/assets/269d0b8e-4163-44df-b756-5849ac106eef)
 
-### 메모생성
+## 메모생성
 ![메모생성gif](https://github.com/user-attachments/assets/58b24039-f09f-472b-9571-2193bccdada0)
 
-### 메모수정
+## 메모수정
 ![메모수정gif](https://github.com/user-attachments/assets/e83ea980-5d24-4885-9d31-56bd5583f549)
 
-### 메모삭제
+## 메모삭제
 ![메모삭제gif](https://github.com/user-attachments/assets/6ebef897-3d72-4c96-9ea5-6b50ca5b19c3)
 
 
