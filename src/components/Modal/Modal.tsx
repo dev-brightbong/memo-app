@@ -66,11 +66,11 @@ export namespace Modal {
           <DialogDescription whiteSpace={"pre-line"}>{content}</DialogDescription>
         </DialogBody>
         <DialogFooter>
+          <Button visual="outline" onClick={onClose}>
+            {cancelText}
+          </Button>
           <Button visual="secondary" onClick={handleConfirm}>
             {confirmText}
-          </Button>
-          <Button visual="secondary" onClick={onClose}>
-            {cancelText}
           </Button>
         </DialogFooter>
       </Modal.BaseModal>
@@ -121,11 +121,11 @@ export namespace Modal {
           />
 
           <HStack w="100%" justifyContent={"flex-end"}>
+            <Button visual="outline" onClick={onClose}>
+              {cancelText}
+            </Button>
             <Button visual="secondary" onClick={handleSave}>
               {saveText}
-            </Button>
-            <Button visual="secondary" onClick={onClose}>
-              {cancelText}
             </Button>
           </HStack>
         </VStack>

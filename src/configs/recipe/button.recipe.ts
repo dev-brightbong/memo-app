@@ -18,6 +18,13 @@ export const buttonRecipe = defineRecipe({
         color: "colors.common.white",
         cursor: "pointer",
       },
+      outline: {
+        bg: "colors.common.white",
+        color: "colors.common.black",
+        cursor: "pointer",
+        borderColor: "colors.common.black",
+        borderWidth: "1px",
+      },
     },
     size: {
       default: {
